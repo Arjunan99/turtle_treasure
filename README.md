@@ -13,36 +13,43 @@ The objective of the game is to drive `turtle1` around the arena to collect rand
 * **Collision Detection**: Computes Euclidean distance between the player and the treasure:
   $$\text{distance} = \sqrt{(x_{\text{player}} - x_{\text{treasure}})^2 + (y_{\text{player}} - y_{\text{treasure}})^2}$$
   A collision is triggered whenever $\text{distance} < 0.5$ units.
-* **Game State Management**: Manages spawning bounds (1.5 to 9.5), score tracking, and victory conditions.
+* **Game State Management**: Manages arena coordinate bounds (1.5 to 9.5), score tracking, and victory conditions.
 
 ---
 
-## 📂 Package Structure
+## 📂 Repository Structure
+
+The repository contains a complete catkin workspace (`turtle_tresure`) holding the `turtle_treasure` ROS package under `src/`:
 
 ```
-turtle_treasure/
-├── CMakeLists.txt
-├── package.xml
-├── scripts/
-│   └── game.py          # Main game loop and ROS node
-└── README.md
+turtle_treasure/                        # Repository Root
+├── README.md                           # Documentation
+├── .gitignore                          # Git ignore rules
+├── .gitattributes                      # Git attributes configuration
+└── turtle_tresure/                     # Catkin Workspace folder
+    └── src/
+        └── turtle_treasure/            # ROS Package
+            ├── CMakeLists.txt          # Catkin build configuration
+            ├── package.xml             # Package dependencies (rospy, turtlesim)
+            └── scripts/
+                └── game.py             # Game loop & ROS node script
 ```
 
 ---
 
 ## 🚀 How to Run
 
-### 1. Build in a Catkin Workspace
-Clone or copy the package into your catkin workspace's `src/` folder:
+### 1. Build the Catkin Workspace
+From the repository root, enter the workspace folder and build:
 ```bash
-cd ~/catkin_ws
+cd turtle_tresure
 catkin_make
 source devel/setup.bash
 ```
 
 ### 2. Make the Script Executable
 ```bash
-chmod +x ~/catkin_ws/src/turtle_treasure/scripts/game.py
+chmod +x src/turtle_treasure/scripts/game.py
 ```
 
 ### 3. Launch the Game
